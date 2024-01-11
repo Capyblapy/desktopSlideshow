@@ -3,11 +3,19 @@ import numpy as np
 from pathlib import Path
 from apscheduler.schedulers.background import BlockingScheduler
 
-path = os.path.join(Path.home(), "OneDrive","Desktop", "deerProject", "deer")
+path = os.path.join(Path.home(), "OneDrive","Desktop", "desktopSlideshow", "deer")
 newDeer = None 
 oldDeer = None
 
-transitionPath = os.path.join(Path.home(), "OneDrive","Desktop", "deerProject", "transitionFrames")
+print(os.path)
+
+try:
+    if not os.path.exists(os.path.join(Path.home(), "OneDrive","Desktop", "desktopSlideshow", "transitionFrames")):
+        os.makedirs(os.path.join(Path.home(), "OneDrive","Desktop", "desktopSlideshow", "transitionFrames"))
+except OSError:
+    print ('Error: Creating directory of transitionFrames')
+
+transitionPath = os.path.join(Path.home(), "OneDrive","Desktop", "desktopSlideshow", "transitionFrames")
 for x in range(0, len(os.listdir(transitionPath))):
     os.remove(os.path.join(transitionPath, "frame"+str(x)+".jpg"))
 
@@ -23,7 +31,7 @@ oldDeer = newDeer
 def transitionDeer():
     # input the code of replacing blue / green with the deer
 
-    video = cv2.VideoCapture(os.path.join(Path.home(), "OneDrive","Desktop", "deerProject", "transition.mp4"))  
+    video = cv2.VideoCapture(os.path.join(Path.home(), "OneDrive","Desktop", "desktopSlideshow", "transition.mp4"))  
     image1 = cv2.imread(os.path.join(path, oldDeer)) 
     image2 = cv2.imread(os.path.join(path, newDeer)) 
 
@@ -96,5 +104,5 @@ def deerSwap():
 # Automatic Run
 
 scheduler = BlockingScheduler()
-scheduler.add_job(deerSwap, 'interval', minutes=10)
+scheduler.add_job(deerSwap, 'interval', seconds=15)
 scheduler.start() 

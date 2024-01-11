@@ -2,12 +2,11 @@ import os, random, ctypes,time,cv2
 import numpy as np  
 from pathlib import Path
 from apscheduler.schedulers.background import BlockingScheduler
+import paths
 
-path = os.path.join(Path.home(), "OneDrive","Desktop", "desktopSlideshow", "deer")
-newDeer = None 
-oldDeer = None
-
-print(os.path)
+path = paths.path
+transitionPath = paths.transitionPath
+videoPath = paths.videoPath
 
 try:
     if not os.path.exists(os.path.join(Path.home(), "OneDrive","Desktop", "desktopSlideshow", "transitionFrames")):
@@ -15,7 +14,13 @@ try:
 except OSError:
     print ('Error: Creating directory of transitionFrames')
 
-transitionPath = os.path.join(Path.home(), "OneDrive","Desktop", "desktopSlideshow", "transitionFrames")
+
+
+newDeer = None 
+oldDeer = None
+
+os.listdir(transitionPath)
+
 for x in range(0, len(os.listdir(transitionPath))):
     os.remove(os.path.join(transitionPath, "frame"+str(x)+".jpg"))
 
@@ -31,7 +36,7 @@ oldDeer = newDeer
 def transitionDeer():
     # input the code of replacing blue / green with the deer
 
-    video = cv2.VideoCapture(os.path.join(Path.home(), "OneDrive","Desktop", "desktopSlideshow", "transition.mp4"))  
+    video = cv2.VideoCapture(videoPath)  
     image1 = cv2.imread(os.path.join(path, oldDeer)) 
     image2 = cv2.imread(os.path.join(path, newDeer)) 
 

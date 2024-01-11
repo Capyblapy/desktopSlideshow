@@ -8,13 +8,6 @@ path = paths.path
 transitionPath = paths.transitionPath
 videoPath = paths.videoPath
 
-try:
-    if not os.path.exists(os.path.join(Path.home(), "OneDrive","Desktop", "desktopSlideshow", "transitionFrames")):
-        os.makedirs(os.path.join(Path.home(), "OneDrive","Desktop", "desktopSlideshow", "transitionFrames"))
-except OSError:
-    print ('Error: Creating directory of transitionFrames')
-
-
 
 newDeer = None 
 oldDeer = None

@@ -103,5 +103,5 @@ def deerSwap():
 # Automatic Run
 
 scheduler = BlockingScheduler()
-scheduler.add_job(deerSwap, 'interval', seconds=30)
+scheduler.add_job(deerSwap, 'interval', seconds=40)
 scheduler.start() 

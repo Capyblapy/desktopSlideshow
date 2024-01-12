@@ -1,12 +1,22 @@
-import os
+"""Settings module for desktop slideshow."""
+
 from pathlib import Path
 
 try:
-    if not os.path.exists(os.path.join(Path.home(),"Desktop", "desktopSlideshow", "transitionFrames")):
-        os.makedirs(os.path.join(Path.home(),"Desktop", "desktopSlideshow", "transitionFrames"))
+    if not Path.exists(
+        Path(Path.home() / "Desktop" / "desktopSlideshow" / "transitionFrames"),
+    ):
+        Path.mkdir(
+            Path(
+                Path.home() / "Desktop" / "desktopSlideshow" / "transitionFrames",
+            ),
+            parents=True,
+        )
 except OSError:
-    print ('Error: Creating directory of transitionFrames')
+    print("Error: Creating directory of transitionFrames")
 
-path = os.path.join(Path.home(),"Desktop", "desktopSlideshow", "deer")
-transitionPath = os.path.join(Path.home(),"Desktop", "desktopSlideshow", "transitionFrames")
-videoPath = os.path.join(Path.home(),"Desktop", "desktopSlideshow", "transition.mp4")
+path = Path(Path.home() / "Desktop" / "desktopSlideshow" / "deer")
+transition_path = Path(
+    Path.home() / "Desktop" / "desktopSlideshow" / "transitionFrames",
+)
+video_path = Path(Path.home() / "Desktop" / "desktopSlideshow" / "transition.mp4")

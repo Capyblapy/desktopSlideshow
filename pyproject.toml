@@ -1,0 +1,27 @@
+[tool.ruff.lint]
+# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
+select = ["ALL"]
+ignore = ["S311", "T201"]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+[tool.poetry]
+name = "desktopslideshow"
+version = "0.1.0"
+description = ""
+authors = ["Capyblapy <111537871+Capyblapy@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+ruff = "^0.1.12"
+opencv-python = "^4.9.0.80"
+numpy = "^1.26.3"
+apscheduler = "^3.10.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

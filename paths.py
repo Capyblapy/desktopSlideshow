@@ -9,4 +9,4 @@ except OSError:
 
 path = os.path.join(Path.home(),"Desktop", "desktopSlideshow", "deer")
 transitionPath = os.path.join(Path.home(),"Desktop", "desktopSlideshow", "transitionFrames")
-videoPath = os.path.join(Path.home(),"Desktop", "desktopSlideshow", "transition.mp4")
+mainPath = os.path.join(Path.home(),"Desktop", "desktopSlideshow")

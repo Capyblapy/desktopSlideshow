@@ -6,16 +6,18 @@ import paths
 
 path = paths.path
 transitionPath = paths.transitionPath
-videoPath = paths.videoPath
-
 
 newDeer = None 
 oldDeer = None
 
-os.listdir(transitionPath)
-
 for x in range(0, len(os.listdir(transitionPath))):
     os.remove(os.path.join(transitionPath, "frame"+str(x)+".jpg"))
+
+for p, d, f in os.walk(paths.mainPath, False):
+    for file in f:
+        if file.endswith('.mp4'):
+            global videoPath
+            videoPath = os.path.join(paths.mainPath, file.title())
 
 # First Run
 def getNewDeer():

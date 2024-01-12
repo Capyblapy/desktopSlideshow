@@ -85,7 +85,8 @@ def transitionDeer():
         ctypes.windll.user32.SystemParametersInfoW(20, 0, os.path.join(transitionPath, "frame"+str(x)+".jpg"), 0)
         time.sleep(0.1)
 
-    ctypes.windll.user32.SystemParametersInfoW(20, 0, os.path.join(path, newDeer), 0)
+    #Keeping last frame as background, to prevent scaling thing.
+    #ctypes.windll.user32.SystemParametersInfoW(20, 0, os.path.join(path, newDeer), 0)
 
     for x in range(0, len(os.listdir(transitionPath))):
         os.remove(os.path.join(transitionPath, "frame"+str(x)+".jpg"))
@@ -102,5 +103,5 @@ def deerSwap():
 # Automatic Run
 
 scheduler = BlockingScheduler()
-scheduler.add_job(deerSwap, 'interval', minutes=10)
+scheduler.add_job(deerSwap, 'interval', seconds=30)
 scheduler.start() 

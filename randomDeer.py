@@ -3,7 +3,6 @@
 import ctypes
 import os
 import random
-import time
 from pathlib import Path
 
 import cv2
@@ -86,6 +85,12 @@ def transitiondeer() -> None:
         name = "./transitionFrames/frame" + str(current_frame) + ".jpg"
         print("Creating..." + name)
         cv2.imwrite(name, frame)
+        ctypes.windll.user32.SystemParametersInfoW(
+            20,
+            0,
+            Path(name).absolute().as_posix(),
+            0,
+        )
 
         # To stop duplicate images
         current_frame += 1
@@ -93,16 +98,6 @@ def transitiondeer() -> None:
     # When everything done, release the capture
     video.release()
     cv2.destroyAllWindows()
-
-    # Playing it
-    for x in range(len(os.listdir(transition_path))):
-        ctypes.windll.user32.SystemParametersInfoW(
-            20,
-            0,
-            Path(transition_path / ("frame" + str(x) + ".jpg")).absolute().as_posix(),
-            0,
-        )
-        time.sleep(0.1)
 
     ctypes.windll.user32.SystemParametersInfoW(
         20,

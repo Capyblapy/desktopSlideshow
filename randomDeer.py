@@ -23,6 +23,7 @@ for p, d, f in os.walk(paths.mainPath, False):
 def getNewDeer():
     global newDeer
     newDeer = random.choice(os.listdir(path))
+
     print(newDeer)
 
 getNewDeer()
@@ -35,8 +36,7 @@ def transitionDeer():
     image1 = cv2.imread(os.path.join(path, oldDeer)) 
     image2 = cv2.imread(os.path.join(path, newDeer)) 
 
-    # Breaking it down
-        
+    # Breaking it down   
     currentFrame = 0
     while(True):
         # Capture frame-by-frame
@@ -86,6 +86,7 @@ def transitionDeer():
     for x in range(0, len(os.listdir(transitionPath))):
         ctypes.windll.user32.SystemParametersInfoW(20, 0, os.path.join(transitionPath, "frame"+str(x)+".jpg"), 0)
         time.sleep(0.1)
+        
 
     #Keeping last frame as background, to prevent scaling thing.
     #ctypes.windll.user32.SystemParametersInfoW(20, 0, os.path.join(path, newDeer), 0)
@@ -105,5 +106,5 @@ def deerSwap():
 # Automatic Run
 
 scheduler = BlockingScheduler()
-scheduler.add_job(deerSwap, 'interval', seconds=40)
+scheduler.add_job(deerSwap, 'interval', seconds=11)
 scheduler.start() 
